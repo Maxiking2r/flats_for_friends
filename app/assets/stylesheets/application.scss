@@ -11,3 +11,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/card";
+@import "components/map";
+@import "components/navbar";
+@import "components/container";
+
+@import 'mapbox-gl/dist/mapbox-gl';
