@@ -1,0 +1,11 @@
+<h1>New flat form page</h1>
+<%= simple_form_for(flat) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :type %>
+  <%= f.input :number_of_rooms %>
+  <%= f.input :price_per_month %>
+  <%= f.input :separation_allowed %>
+  <%= f.submit %>
+<% end %>
