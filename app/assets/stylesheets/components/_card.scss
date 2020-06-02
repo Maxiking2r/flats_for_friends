@@ -1,1 +1,89 @@
 // Please add card design in here!
+
+.card-apartment {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-apartment > img {
+  height: 372px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-apartment-images {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.card-apartment h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-apartment p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-apartment .card-apartment-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-apartment-infos .card-apartment-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.img-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 12px;
+}
+
+.textbox-lg {
+  padding: 15px;
+  background: white;
+  border-radius: 15px;
+  width: 800px;
+  height: 300px;
+}
+
+.textbox-sm {
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.16);
+  border-radius: 15px;
+  height: 375px;
+  width: 250px;
+  padding: 15px;
+}
+
+.card-apartment-infos {
+  display:flex;
+  align-items: center;
+
+  p {
+    margin-bottom: 0;
+  }
+}
