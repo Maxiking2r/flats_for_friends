@@ -14,3 +14,7 @@ $headers-font: 'Roboto Mono', "monospace";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+/* Importing components */
+@import url("components/card-flat.scss");
+
+
