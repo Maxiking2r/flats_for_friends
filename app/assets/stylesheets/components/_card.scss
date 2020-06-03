@@ -1,0 +1,21 @@
+// Please add card design in here!
+.cards {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ grid-gap: 16px;
+ margin: 30px;
+}
+
+.card {
+  background: #FFFFFF;
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.16);
+  border-radius: 15px;
+  width: 368px;
+  height: 313px;
+  padding: 35px;
+}
+
+.card h2 {
+  padding: 0px 0px 30px 0px;
+}
+
