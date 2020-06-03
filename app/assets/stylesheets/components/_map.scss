@@ -1,3 +1,12 @@
+
+#map {
+  display:block;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  border-radius: 15px;
+}
+
 .mapboxgl-popup {
   max-width: 200px;
 }
@@ -6,4 +15,5 @@
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
+
 
