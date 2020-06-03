@@ -1,7 +1,13 @@
+.content {
+  display: flex;
+}
+
 .card-flat {
+  flex-grow: 1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  padding: 16px;
 }
 
 .card-flat > img {
@@ -24,6 +30,11 @@
 
 
 .card-flat .card-flat-infos {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -32,6 +43,11 @@
 }
 
 .card-flat-infos .card-flat-user {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
   position: absolute;
   right: 16px;
   top: -20px;
