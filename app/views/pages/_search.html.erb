@@ -9,13 +9,13 @@
 
 <div class=d-flex>
   <%= form_tag flats_path, method: :get do %>
-    <%= text_field_tag :separation,
-      params[:separation],
+    <%= text_field_tag :separation_allowed,
+      params[:separation_allowed],
       class: "form-control",
       placeholder: "To what degree do you want to know the host"
     %>
-    <%= text_field_tag :city,
-      params[:city],
+    <%= text_field_tag :location,
+      params[:location],
       class: "form-control",
       placeholder: "Where do you want to move to ?"
     %>
