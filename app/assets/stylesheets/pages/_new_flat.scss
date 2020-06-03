@@ -1,0 +1,52 @@
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.flex-container {
+  display: flex;
+  // background: #FFFAC9;
+}
+
+.container {
+  width: 60%;
+  padding: 30px;
+  font-family: Roboto;
+  font-size: 15px;
+}
+
+.form-image {
+  width: 40%;
+}
+
+.form-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.upload-photo {
+  border: 1px solid #d3d3d3;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #6D05BF 0%, #290233 100%);
+  color: white;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.upload-photo:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.preview-img {
+  width: 150px;
+}
