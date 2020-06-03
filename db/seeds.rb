@@ -1,4 +1,3 @@
-
 require "date"
 puts 'Cleaning the database'
 Booking.delete_all
