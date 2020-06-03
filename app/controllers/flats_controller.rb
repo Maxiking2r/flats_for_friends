@@ -2,14 +2,18 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:query].present?
-      @query = params[:query]
-      @flats = Flat.where("name iLike '%#{params[:query]}%'")
-    else
-      @flats = Flat.all
+
+    @flats = Flat.all
+
+    if params[:location].present?
+      @flats = @flats.where("location ILIKE ?", "%#{params[:location]}%")
     end
 
-    @flats = Flat.geocoded
+    if params[:separation_allowed].present?
+      @flats = @flats.where("separation_allowed >= ?", "#{params[:separation_allowed]}")
+    end
+
+    @flats = @flats.geocoded
 
     @markers = @flats.map do |flat|
       {
@@ -17,13 +21,13 @@ class FlatsController < ApplicationController
         lng: flat.longitude
       }
     end
-  end
 
-  def new
-    @flat = Flat.new
-  end
+    def new
+      @flat = Flat.new
+    end
 
-  def show
-    @flat = Flat.find(params[:id])
+    def show
+      @flat = Flat.find(params[:id])
+    end
   end
 end
