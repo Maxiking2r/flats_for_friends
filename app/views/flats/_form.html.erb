@@ -1,0 +1,33 @@
+<div class = new_flat> 
+  <h2> Just a few items for you to fill.</h2>
+</div>  
+<%= simple_form_for(flat) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :flat_type, collection: ["flat", "room"] %>
+  <%= f.input :number_of_rooms %>
+  <%= f.input :price_per_month %>
+  <%= f.input :separation_allowed %>
+<!--   Single image preview
+ -->  <%#= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', class: 'd-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', class: 'd-none', id: 'photo-input', onChange: "imagesPreview(this, 'div.gallery')" }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo', direct_upload: true %>
+  <%#= image_tag "", width: 150, class: "hidden", id: "photo-preview" %>
+  <div class="gallery"></div>
+  <%= f.button :submit, 'Submit' %>
+<% end %>
+<script>
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+        if (input.files) {
+            var filesAmount = input.files.length;
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    $($.parseHTML('<img class="preview-img">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+    };
+  </script>
