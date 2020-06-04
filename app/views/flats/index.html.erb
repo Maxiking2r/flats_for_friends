@@ -7,6 +7,7 @@
   <div class="col-6">
     <div>
       <% @flats.each do |flat| %>
+      <%= link_to flat_path(flat) do %>
          <div class="card-flat">
             <img src="https://images.unsplash.com/photo-1560930950-5cc20e80e392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" />
             <div class="card-flat-infos">
@@ -20,8 +21,9 @@
               <div><img class="avatar-bordered" src="<%= image_path("placeholder.jpg") %>"></div>
             </div>
           </div>
-          <% end %>
-        </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div class="col-6">
