@@ -2,7 +2,7 @@ class FlatsController < ApplicationController
   # before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    redirect_to flats_path
+
     @flats = Flat.all
 
     if params[:location].present?
@@ -22,7 +22,7 @@ class FlatsController < ApplicationController
       }
     end
   end
-
+  
   def show
     @flat = Flat.find(params[:id])
   end
