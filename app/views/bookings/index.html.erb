@@ -24,16 +24,16 @@
     <div class="card-flat">
     <h2>Planned renting-outs 🛏</h2>
 
-      <ul>
-        <% @bookings_as_owner.each do |booking| %>
-          <li> Name: <%= booking.flat.name %></li>
+      <!-- <ul>
+        <%# @bookings_as_owner.each do |booking| %>
+          <li> Name: <%=# booking.flat.name %></li>
           <li> Start Date: <%= booking.start_date %> | End Date: <%= booking.end_date %></li>
           <li> Status: <%= booking.confirmed %></li>
-          <li> <%= link_to "#{booking.flat.name}", booking_path(booking)%></li>
-          <%= link_to "Accept", accepted_booking_path(booking), method: :patch %>
-          <%= link_to "Decline", declined_booking_path(booking), method: :patch %>
-        <% end %>
-      </ul>
+          <li> <%=# link_to "#{booking.flat.name}", booking_path(booking)%></li>
+          <%=# link_to "Accept", accepted_booking_path(booking), method: :patch %>
+          <%=# link_to "Decline", declined_booking_path(booking), method: :patch %>
+        <%# end %>
+      </ul> -->
 
     </div>
   </div>

@@ -3,9 +3,9 @@
 
   <%= simple_form_for :search, url: flats_path, method: "get" do |f| %>
 <div class = "d-flex form-inline">
-    <%= f.input :separation_allowed, required: false, placeholder: "To what degree do you want to know the host", label: false, input_html: {value: location} %>
-    <%= f.input :location, required: false, placeholder: "Where do you want to move to ?", label: false, input_html: {value: separation_allowed} %>
-    <%= f.input :dates, required: false, input_html: {class: "datepicker-range"}, label: false %>
+    <%= f.input :separation_allowed, required: false, placeholder: "Degree of Separation", label: false, input_html: {value: location} %>
+    <%= f.input :location, required: false, placeholder: "City", label: false, input_html: {value: separation_allowed} %>
+    <%= f.input :dates, required: false, placeholder: "Rental Period", input_html: {class: "datepicker-range"}, label: false %>
     <%= f.button :submit, "Search", class: "btn btn-rounded" %>
 </div>
   <% end %>
