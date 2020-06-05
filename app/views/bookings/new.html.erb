@@ -41,7 +41,7 @@
             <%= messages_form.input :content, label: "Message", class: "messages-form" %>
           <% end %>
 
-            <%= f.submit "Say Hi 👋", class:"btn btn-rounded" %>
+            <%= f.submit "Say Hi 👋", class:"btn btn-rounded", data: {turbolinks: false} %>
             <% end %>
         </div>
       </div>

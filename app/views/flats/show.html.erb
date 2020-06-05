@@ -62,7 +62,7 @@
           <p><%= @flat.separation_allowed.ordinalize %> Degree</p>
           <h3>Time</h3>
           <p>01/01/20 - 30/06/2020</p>
-          <%= link_to "Say Hi 👋", new_flat_booking_path(@flat), class:"btn btn-rounded" %>
+          <%= link_to "Say Hi 👋", new_flat_booking_path(@flat), class:"btn btn-rounded", data: {turbolinks: false} %>
         </div>
       </div>
     </div>
