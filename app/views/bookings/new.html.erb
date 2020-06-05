@@ -1,0 +1,54 @@
+<div class="container pt-4">
+  <div class="container">
+    <div class="row no-margin-left">
+      <div class="col-12">
+        <h2> 📅 Enter your Dates</h2>
+      </div>
+
+
+      <div class="col-12 d-flex justify-content-between no-margin-left">
+
+
+        <%= simple_form_for [ @flat, @booking ], html: { class: "col-12 d-flex justify-content-between" } do |f| %>
+          <div class="col-6 no-margin-left">
+            <%= f.input :start_date, placeholder: "From" %>
+            <%= f.input :end_date, placeholder: "Until" %>
+          </div>
+
+        <div class="col-6 no-margin-left">
+          <div class="textbox-squared">
+            <img class="avatar-bordered" id="avatar-right" alt="avatar-bordered avatar-grey" src="https://media-exp1.licdn.com/dms/image/C4D03AQEf6XT0OlY0Qw/profile-displayphoto-shrink_400_400/0?e=1596672000&v=beta&t=FDfyhDNqGmzTx8ts3X25GZkfsTgU2WMHQOtIE7ickiI" />
+            <h3>Total Price</h3>
+            <p><%= @flat.price_per_month %>€/month</p>
+            <h3>Separation</h3>
+            <p><%= @flat.separation_allowed.ordinalize %> Degree</p>
+            <h3>Time</h3>
+            <p>01/01/20 - 30/06/2020</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12 pt-4">
+        <div class="avatar-bookings">
+          <img class="avatar-bordered" alt="avatar-bordered" src="https://media-exp1.licdn.com/dms/image/C4D03AQG1oWYVQxxWvw/profile-displayphoto-shrink_800_800/0?e=1596672000&v=beta&t=BRPjAcHG16_fSYerWlXu2vbscapNLAM6CNyg36EVsd0" />
+          <img class="avatar-bordered avatar-grey" alt="avatar-bordered-grey" src="https://ca.slack-edge.com/T02NE0241-U0113CRS8MC-6dec4b1f2e3c-512" />
+        </div>
+
+
+        <div class="btn-message pt-4">
+          <%= f.simple_fields_for :messages, Message.new do |messages_form| %>
+            <%= messages_form.input :content, label: "Message", class: "messages-form" %>
+          <% end %>
+
+            <%= f.submit "Say Hi 👋", class:"btn btn-rounded"  %>
+            <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
