@@ -1,34 +1,43 @@
-<div class="container">
-  <h1>Overview of your Friend's Flats</h1>
-</div>
 <br>
 
 <div class="container-fluid d-flex">
-  <div class="col-6">
-    <div>
+<!--   <div class="col-6"> -->
+    <div class="cards">
       <% @flats.each do |flat| %>
          <div class="card-flat">
             <img src="https://images.unsplash.com/photo-1560930950-5cc20e80e392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" />
-            <div class="card-flat-infos">
-              <h2><%= flat.name %></h2>
-              <div class= d-flex>
-                <%= "#{flat.flat_type.capitalize} · " %>
-                <%= "#{flat.number_of_rooms} rooms  · " %>
-                <%= "#{flat.separation_allowed} ° separation" %>
+              <div class="card-flat-infos">
+                <div>
+                  <h2><%= flat.name %></h2>
+                  <p>
+                  <%= "#{flat.flat_type.capitalize} · " %>
+                  <%= "#{flat.number_of_rooms} rooms  · " %>
+                  <%= "#{flat.separation_allowed} ° separation" %>
+                  <h2 class="card-flat-pricing"><%= "#{flat.price_per_month}€/month" %></h2>
+                  </p>
+                </div>
+                <img class="card-flat-user avatar-bordered" src="<%= image_path("placeholder.jpg") %>">
               </div>
-              <h2 class="card-flat-pricing"><%= "#{flat.price_per_month}€/month" %></h2>
-              <div><img class="avatar-bordered" src="<%= image_path("placeholder.jpg") %>"></div>
-            </div>
           </div>
-          <% end %>
-        </div>
+      <% end %>
+<!--     </div> -->
+</div>
+
+<!-- <div class="card-trip">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-trip-infos">
+    <div>
+      <h2>Title here</h2>
+      <p>Short description here!</p>
+    </div>
+    <h2 class="card-trip-pricing">£99.99</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
   </div>
+</div> -->
+
 
   <div class="col-6">
-    <div id="map"
-     style="width: 600px; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div id="map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
      </div>
   </div>
 </div>
