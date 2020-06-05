@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
-  <h2> <%= link_to "Flats 4 Friends","#"%> </h2>
+  <h2> <%= link_to "Flats 4 Friends",root_path %> </h2>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class = "btn btn-squared">
-          <%= link_to "Create new flat", new_flat_path %>
+          <%= link_to "Create a new flat", new_flat_path %>
         </li>
         <li class="nav-item active">
           <%= link_to "Home", "#", class: "nav-link" %>
