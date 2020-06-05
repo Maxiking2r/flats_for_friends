@@ -1,26 +1,14 @@
-<form class="form-inline">
-        <%= form_tag flats_path, method: :get do %>
-          <%= text_field_tag :separation_allowed,
-            params[:separation_allowed],
-            class: "form-control",
-            placeholder: "To what degree do you want to know the host"
-          %>
-          <%= text_field_tag :location,
-            params[:location],
-            class: "form-control",
-            placeholder: "Where do you want to move to ?"
-          %>
-          <%= submit_tag "Search", class: "btn btn-rounded" %>
-        <% end %>
-</form>
-<div class="container">
-  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2>Flatpickr Demo</h2>
+<% location = params[:search][:location] if !params[:search].nil? %>
+<% separation_allowed = params[:search][:separation_allowed] if !params[:search].nil? %>
 
-    <%= simple_form_for :search, method: "get" do |f| %>
-      <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "Go", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  <%= simple_form_for :search, url: flats_path, method: "get" do |f| %>
+<div class = "d-flex form-inline">
+    <%= f.input :separation_allowed, required: false, placeholder: "To what degree do you want to know the host", label: false, input_html: {value: location} %>
+    <%= f.input :location, required: false, placeholder: "Where do you want to move to ?", label: false, input_html: {value: separation_allowed} %>
+    <%= f.input :dates, required: false, input_html: {class: "datepicker-range"}, label: false %>
+    <%= f.button :submit, "Search", class: "btn btn-rounded" %>
 </div>
+  <% end %>
+
+
+
