@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
   has_many :flats
   has_many :bookings
+  has_many :messages
   validates :first_name, presence: true
   validates :last_name, presence: true
 
@@ -49,4 +50,6 @@ class User < ApplicationRecord
   #     end
   #   end
   # end
+
+  
 end
