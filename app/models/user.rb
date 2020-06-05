@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :flats
   has_many :bookings
   has_many :messages
+  has_one_attached :photo
   validates :first_name, presence: true
   validates :last_name, presence: true
 
@@ -51,5 +52,5 @@ class User < ApplicationRecord
   #   end
   # end
 
-  
+
 end
