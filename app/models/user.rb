@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :flats
   has_many :bookings
   has_many :messages
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
@@ -51,5 +51,5 @@ class User < ApplicationRecord
   #   end
   # end
 
-  
+
 end
