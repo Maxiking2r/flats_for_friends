@@ -1,9 +1,11 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :flat
-  validates :start_date, :end_date, presence: true, availability: true
+  has_many :messages
+  validates :start_date, :end_date, presence: true
   # validates :end_date_after_start_date
   validates :confirmed, inclusion: { in: %w(declined pending confirmed) }
+  accepts_nested_attributes_for :messages
 
   def booked_date_range
     { from: :start_date, to: :end_date }

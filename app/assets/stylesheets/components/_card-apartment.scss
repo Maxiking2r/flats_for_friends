@@ -70,6 +70,17 @@
   height: 233px;
 }
 
+.textbox-squared {
+  position: absolute;
+  right: 0;
+  margin-top: 25px;
+  padding: 15px;
+  background: white;
+  border-radius: 15px;
+  height: 225px;
+  width: 225px;
+}
+
 .textbox-sm {
   position: relative;
   background: #FFFFFF;
@@ -81,7 +92,7 @@
 
 #avatar-right {
   position: absolute;
-  right: 20px;
+  right: 15px;
 
 }
 

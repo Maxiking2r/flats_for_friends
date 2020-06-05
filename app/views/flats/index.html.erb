@@ -1,9 +1,9 @@
 <br>
 
 <div class="container-fluid d-flex">
-<!--   <div class="col-6"> -->
     <div class="cards">
       <% @flats.each do |flat| %>
+      <%= link_to flat_path(flat) do %>
          <div class="card-flat">
             <img src="https://images.unsplash.com/photo-1560930950-5cc20e80e392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" />
               <div class="card-flat-infos">
@@ -20,20 +20,9 @@
               </div>
           </div>
       <% end %>
-<!--     </div> -->
 </div>
 
-<!-- <div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2>Title here</h2>
-      <p>Short description here!</p>
-    </div>
-    <h2 class="card-trip-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-  </div>
-</div> -->
+
 
 
   <div class="col-6">
