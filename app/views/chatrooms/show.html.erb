@@ -1,0 +1,29 @@
+<div class="container pt-4">
+  <div class="row no-margin-left justify-content-center">
+    <div class="col-6 chat-title">
+      <h2><%= @booking.user.first_name %></h2>
+    </div>
+  </div>
+  <% @booking.messages.each do |message| %>
+
+    <div class="row no-margin-left justify-content-center">
+      <div class="col-6 d-flex">
+
+        <div class="message-avatar-container">
+          <% if message.user.facebook_picture_url%>
+            <%= image_tag message.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% elsif message.user.photo.attached? %>
+            <%= cl_image_tag message.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
+        </div>
+        <div>
+          <span class="message-content-info"><%= message.user.first_name %><em><%= message.created_at.strftime("%b %e, %l:%M %p") %></em></span>
+          <p class="message-content"><%= message.content %></p>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+</div>
