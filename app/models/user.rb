@@ -7,9 +7,10 @@ class User < ApplicationRecord
   has_many :flats
   has_many :bookings
   has_many :messages
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-
+  has_one_attached :photo
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
     user_params.merge! auth.info.slice("email", "first_name", "last_name")
