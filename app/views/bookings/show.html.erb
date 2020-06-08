@@ -23,14 +23,6 @@
     <div class="overlay__content">
       <span class="spinner"></span>
     </div>
-    <% if current_user.id == @booking.flat.user_id %>
-
-      <%= link_to "Accept", accepted_flat_path(@booking), method: :patch %>
-      <%= link_to "Decline", declined_flat_path(@booking), method: :patch %>
-
-      <% else %>
-        <%= @booking.confirmed %>
-    <% end %>
   </div>
 </div>
 
