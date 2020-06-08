@@ -20,3 +20,66 @@
   padding: 0px 0px 30px 0px;
 }
 
+.card-dashboard {
+  background: #FFFFFF;
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.16);
+  border-radius: 15px;
+  padding: 60px;
+  margin: 30px 0;
+
+  .card-dashboard-title {
+    display: block;
+    font-weight: 600;
+    font-size: 21px;
+    margin-bottom: 26px;
+  }
+  .card-dashboard-item {
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid $lightgray;
+  }
+
+  .card-dashboard-item:last-of-type {
+    border-bottom: none;
+  }
+
+  .booking-info {
+    margin-left: 26px;
+    span {
+      font-weight: 500;
+    }
+    p {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-bottom: 0;
+    }
+  }
+  .booking-actions {
+    align-items: center;
+    .action-button {
+      border-radius: 25px;
+      margin: 0 12px;
+      padding: 8px;
+      font-size: 14px;
+    }
+    .accept-button {
+      color: #6FCF97;
+    }
+    .decline-button {
+      color: #EB5757;
+    }
+    .respond-button {
+      color: $purple;
+    }
+  }
+}
+
+.add-button {
+  margin-top: 25px;
+  background: #6FCF97;
+  color: white;
+  }
+
+
+
+

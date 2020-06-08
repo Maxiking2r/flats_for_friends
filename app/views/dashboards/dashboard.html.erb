@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 card-dashboard">
+      <h3 class="card-dashboard-title">Bookings</h3>
+        <% @bookings_as_owner.each do |booking| %>
+          <%= link_to booking_path(booking) do %>
+            <div class="d-flex justify-content-between card-dashboard-item">
+              <div class="d-flex">
+                <% if booking.user.facebook_picture_url%>
+                  <%= image_tag booking.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                <% elsif booking.user.photo.attached? %>
+                  <%= cl_image_tag booking.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                <% else %>
+                  <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+                <% end %>
+                <div class="booking-info">
+                  <span> Request · <%= booking.user.first_name%> · <%= booking.confirmed %></span>
+                  <p><%= booking.start_date %> - <%= booking.end_date %>  · <%= booking.flat.name %></p>
+                </div>
+              </div>
+              <div class="d-flex booking-actions">
+                <%= link_to "Respond","#", class: "action-button respond-button"%>
+                <%= link_to "Accept", accepted_booking_path(booking.id), method: :patch, class: "action-button accept-button" %>
+                <%= link_to "Decline", declined_booking_path(booking.id), method: :patch, class: "action-button decline-button" %>
+              </div>
+            </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 card-dashboard">
+      <h3 class="card-dashboard-title">Flats</h3>
+        <% @flats.each do |flat| %>
+          <%= link_to flat_path(flat) do %>
+            <div class="d-flex justify-content-between card-dashboard-item">
+              <div class="d-flex">
+                <% if flat.photos.attached? %>
+                  <%= cl_image_tag flat.photos.first.key, width: 40, height: 40, crop: :fill, class: "rounded"%>
+                <% else %>
+                  <span class="iconify" data-inline="false" data-icon="bi:card-image" style="font-size: 40px;"></span>
+                <% end %>
+                <div class="booking-info">
+                  <span><%= flat.name %></span>
+                  <p><%= flat.flat_type.capitalize %> · <%= flat.location.capitalize %></p>
+                </div>
+              </div>
+              <div class="d-flex booking-actions">
+                  <%= link_to "Delete", flat_path(flat.id), method: :delete, data: { confirm: "Are you sure?"}, class: "action-button decline-button"%>
+                  <%= link_to "Edit", edit_flat_path(flat.id), class: "action-button respond-button" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <%= link_to "Add flat", new_flat_path, class: "btn add-button" %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
