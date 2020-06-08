@@ -20,6 +20,8 @@
 .spinner {
     width: 40px;
     height: 40px;
+    position: relative;
+    bottom: 30px;
     display: inline-block;
     border-width: 5px;
     border-color: linear-gradient(180deg, #6D05BF 0%, #290233 100%);

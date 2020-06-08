@@ -2,15 +2,20 @@ class FlatsController < ApplicationController
   # before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-
     @flats = Flat.all
-
-    if params[:location].present?
-      @flats = @flats.where("location ILIKE ?", "%#{params[:location]}%")
+    if search_params[:location].present?
+      @flats = @flats.where("location ILIKE ?", "%#{search_params[:location]}%")
     end
 
-    if params[:separation_allowed].present?
-      @flats = @flats.where("separation_allowed >= ?", "#{params[:separation_allowed]}")
+    if search_params[:separation_allowed].present?
+      @flats = @flats.where("separation_allowed >= ?", "#{search_params[:separation_allowed]}")
+    end
+
+    if search_params[:dates].present?
+      dates = search_params[:dates].split(" to ")
+      start_at = Date.parse(dates[0])
+      end_at = Date.parse(dates[1])
+      @flats = @flats.joins(:bookings).where.not("(? >= bookings.start_date AND ? <= bookings.end_date) OR (? >= bookings.start_date AND ? <= bookings.end_date)", start_at, start_at, end_at, end_at)
     end
 
     @flats = @flats.geocoded
@@ -22,7 +27,7 @@ class FlatsController < ApplicationController
       }
     end
   end
-  
+
   def show
     @flat = Flat.find(params[:id])
   end
@@ -42,6 +47,10 @@ class FlatsController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.require(:search).permit(:separation_allowed, :location, :dates)
+  end
 
   def flat_params
     params.require(:flat).permit(:name, :description, :location, :flat_type, :number_of_rooms, :price_per_month, :separation_allowed, photos: [])

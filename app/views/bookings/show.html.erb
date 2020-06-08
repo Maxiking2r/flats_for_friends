@@ -8,14 +8,17 @@
 <div class="col-6">
   <div class="card-flat">
     <ul>
-        <li> Name: <%= @booking.flat.name %></li>
-        <li> Start Date: <%= @booking.start_date %>
-          <br> End Date: <%= @booking.end_date %></li>
-        <li> Type: <%= @booking.flat.flat_type %></li>
-        <li> Capacity: <%= @booking.flat.number_of_rooms %> rooms</li>
-        <li> Description: <%= @booking.flat.description %></li>
+        <p> <strong>Name:</strong> <%= @booking.flat.name %></p>
+        <p> <strong>Start Date:</strong> <%= @booking.start_date %>
+          <br> <strong>End Date:</strong> <%= @booking.end_date %></p>
+        <p> <strong>Type:</strong> <%= @booking.flat.flat_type %></p>
+        <p> <strong>Capacity:</strong> <%= @booking.flat.number_of_rooms %> rooms</p>
+        <p> <strong>Description:</strong> <%= @booking.flat.description %></p>
     </ul>
   </div>
+
+<br>
+
   <div class="card-flat">
     <div class="overlay__content">
       <span class="spinner"></span>
