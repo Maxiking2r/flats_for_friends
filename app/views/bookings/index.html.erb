@@ -1,44 +1,56 @@
 <div class="container">
-  <h1>Overview of all your Bookings</h1>
+  <h1>🗓 Bookings</h1>
 </div>
-<br>
-
 <div class="container-fluid d-flex">
-  <div class="col-6">
-    <div class="card-flat">
-    <h2>My planned Bookings 🛌</h2>
 
-      <ul>
+  <div class="justify-content-center col-6">
+    <h3>Friends flats for me 🛌</h3>
         <% @bookings_as_renter.each do |booking| %>
-          <p> Name: <%= booking.flat.name %></p>
-          <p> Start Date: <%= booking.start_date %>
-            <br>
-            End Date: <%= booking.end_date %></p>
-          <p> Status: <%= booking.confirmed %></p>
-          <br>
-          <p> <%= link_to "#{booking.flat.name}", booking_path(booking), class: "btn btn-squared:hover"%></p>
+        <div class="card-flat col-sm-12 col-md-6 col-lg-4">
+          <% if booking.flat.photos.first %>
+          <%= cl_image_tag booking.flat.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+          <div class="card-flat-infos">
+            <div>
+              <h2> <%= link_to "#{booking.flat.name}", booking_path(booking), class: "btn btn-squared:hover"%></h2>
+    <!--      <p> Name: <%#= booking.flat.name %></p>
+     -->      <p> Start Date: <%= booking.start_date %></p>
+              <p> End Date: <%= booking.end_date %></p>
+              <p> Status: <%= booking.confirmed %></p>
+            </div>
+            <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-flat-user avatar-bordered" /> -->
+            <% if @user.facebook_picture_url%>
+              <%= image_tag @user.facebook_picture_url, class: "card-flat-user avatar-bordered" %>
+            <% elsif @user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, width: 40, height: 40, crop: :fill, class: "card-flat-user avatar-bordered" %>
+            <% else %>
+              <%= image_tag "http://placehold.it/30x30", class: "card-flat-user avatar-bordered" %>
+            <% end %>
+          </div>
+        </div>
         <% end %>
-      </ul>
-
-    </div>
   </div>
 
-  <div class="col-6">
-    <div class="card-flat">
-    <h2>Planned renting-outs 🛏</h2>
-
-      <!-- <ul>
-        <%# @bookings_as_owner.each do |booking| %>
-          <li> Name: <%#= booking.flat.name %></li>
-          <li> Start Date: <%= booking.start_date %> | End Date: <%= booking.end_date %></li>
-          <li> Status: <%= booking.confirmed %></li>
-          <li> <%#= link_to "#{booking.flat.name}", booking_path(booking)%></li>
-          <%#= link_to "Accept", accepted_booking_path(booking), method: :patch %>
-          <%#= link_to "Decline", declined_booking_path(booking), method: :patch %>
-        <% #end %>
-      </ul> -->
-
-    </div>
+  <div class="justify-content-center col-6">
+    <h3>My flat for friends 🛏</h3>
+        <% @bookings_as_owner.each do |booking| %>
+        <div class="card-flat col-sm-12 col-md-6 col-lg-4">
+          <% if booking.flat.photos.first %>
+          <%= cl_image_tag booking.flat.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+          <div class="card-flat-infos">
+            <div>
+              <h2> <%= link_to "#{booking.flat.name}", booking_path(booking), class: "btn btn-squared:hover" %></h2>
+    <!--      <p> Name: <%#= booking.flat.name %></p>
+     -->      <p> Start Date: <%= booking.start_date %> | End Date: <%= booking.end_date %></p>
+              <p> Status: <%= booking.confirmed %></p>
+              <%#= link_to "Accept", accepted_booking_path(booking), method: :patch %>
+              <%#= link_to "Decline", declined_booking_path(booking), method: :patch %>
+            <%= link_to "Accept", bookings_path(@booking, booking: { confirmed: "confirmed" }), method: :patch, class: "btn btn-squared:hover" %>
+            <%= link_to "Decline", bookings_path(@booking, booking: { confirmed: "declined" }), method: :patch, class: "btn btn-squared:hover" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
   </div>
-
 </div>

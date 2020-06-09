@@ -5,26 +5,25 @@
 <br>
 
 <div class="container-fluid d-flex">
-<div class="col-6">
-  <div class="card-flat">
-    <ul>
-        <p> <strong>Name:</strong> <%= @booking.flat.name %></p>
+  <div class="col-6">
+    <div>
+      <% if @booking.flat.photos.first %>
+      <%= cl_image_tag @booking.flat.photos.first.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+    <div class="card-flat">
+        <h2> <%= @booking.flat.name %></h2>
         <p> <strong>Start Date:</strong> <%= @booking.start_date %>
           <br> <strong>End Date:</strong> <%= @booking.end_date %></p>
         <p> <strong>Type:</strong> <%= @booking.flat.flat_type %></p>
         <p> <strong>Capacity:</strong> <%= @booking.flat.number_of_rooms %> rooms</p>
         <p> <strong>Description:</strong> <%= @booking.flat.description %></p>
-    </ul>
-  </div>
-
-<br>
-
-  <div class="card-flat">
-    <div class="overlay__content">
-      <span class="spinner"></span>
     </div>
   </div>
-</div>
+  </div>
 
-<img id="booking-pic" src="https://images.unsplash.com/photo-1534120247760-c44c3e4a62f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
+  <div class="col-6">
+  <div id="map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+   </div>
+  </div>
 </div>

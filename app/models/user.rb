@@ -4,13 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
-  has_many :flats
-  has_many :bookings
-  has_many :messages
-  has_one_attached :photo
+  has_many :flats, dependent: :destroy
+  has_many :bookings, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
   validates :first_name, presence: true
   validates :last_name, presence: true
-  
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
     user_params.merge! auth.info.slice("email", "first_name", "last_name")

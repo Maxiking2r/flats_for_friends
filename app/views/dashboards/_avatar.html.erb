@@ -1,0 +1,7 @@
+<% if booking.user.facebook_picture_url%>
+  <%= image_tag booking.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+<% elsif booking.user.photo.attached? %>
+  <%= cl_image_tag booking.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+<% else %>
+  <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+<% end %>

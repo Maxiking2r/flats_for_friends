@@ -1,0 +1,28 @@
+.message-avatar-container {
+  display: block;
+  margin-right: 26px;
+}
+
+
+.chat-title {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid $lightgray;
+}
+
+.message-content-info {
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  em {
+    font-size: 12px;
+    color: #929090;
+    font-style: normal;
+    margin-left: 8px;
+  }
+}
+
+.message-content {
+  opacity: 0.8;
+  line-height: 1.3em;
+}
