@@ -13,8 +13,8 @@ class FlatsController < ApplicationController
 
     if search_params[:dates].present?
       dates = search_params[:dates].split(" to ")
-      start_at = Date.parse(dates[0])
-      end_at = Date.parse(dates[1])
+      start_at = Date.parse(dates[0]).strftime("%e %B %Y")
+      end_at = Date.parse(dates[1]).strftime("%e %B %Y")
       @flats = @flats.joins(:bookings).where.not("(? >= bookings.start_date AND ? <= bookings.end_date) OR (? >= bookings.start_date AND ? <= bookings.end_date)", start_at, start_at, end_at, end_at)
     end
 
@@ -30,6 +30,11 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    if params[:dates]
+      @dates = params[:dates].split
+      @start_date = Date.parse(@dates[0]).strftime("%e %B %Y")
+      @end_date = Date.parse(@dates[2]).strftime("%e %B %Y")
+    end
   end
 
   def new
