@@ -15,7 +15,13 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :show, :edit, :update] do
     resources :messages, only: [:create]
   end
-  resources :chatrooms, only: [:show, :index]
 
-  get "/dashboard", to: "dashboard#dashboard"
+  resources :bookings, only: [:index, :show, :edit, :update] do
+    member do
+      patch :accepted, :declined
+    end
+  end
+  
+  resources :chatrooms, only: [:show, :index]
+  get "/dashboard", to: "dashboards#dashboard"
 end
