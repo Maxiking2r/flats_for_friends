@@ -1,0 +1,89 @@
+<div class="container pt-4">
+  <div class="row no-margin-left justify-content-center">
+    <div class="col-6 chat-title">
+      <h2> ✉️ Messages </h2>
+    </div>
+  </div>
+
+  <div class="row no-margin-left justify-content-center">
+    <div class="col-6 chat-title pt-4">
+      <h3> <em>Owner</em> </h3>
+    </div>
+  </div>
+
+  <% @bookings_as_owner.each do |booking| %>
+    <%= link_to chatroom_path(booking) do %>
+
+   <div class="row no-margin-left justify-content-center">
+         <div class="col-6 d-flex">
+
+            <div class="message-avatar-container">
+              <% if booking.messages.last.user.facebook_picture_url%>
+                <%= image_tag booking.messages.last.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% elsif booking.messages.last.user.photo.attached? %>
+                <%= cl_image_tag booking.messages.last.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% else %>
+                <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% end %>
+            </div>
+            <div class="w-100 d-flex justify-content-between">
+             <div>
+               <span class="message-content-info"><%= booking.messages.last.user.first_name %><em><%= booking.messages.last.created_at.strftime("%b %e, %l:%M %p") %></em></span>
+               <p class="message-content"><%= booking.messages.last.content %></p>
+              </div>
+              <% if booking.confirmed == "declined" %>
+               <span class="indicator declined"> Declined </span>
+              <% elsif booking.confirmed == "accepted" %>
+              <span class="indicator accepted"> Accepted </span>
+              <% else "pending" %>
+              <span class="indicator pending"> Pending </span>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+     <% end %>
+
+    <div class="row no-margin-left justify-content-center">
+      <div class="col-6 chat-title pt-4">
+        <h3> <em>Renter</em></h3>
+      </div>
+    </div>
+
+  <% @bookings_as_renter.each do |booking| %>
+    <%= link_to chatroom_path(booking) do %>
+
+
+   <div class="row no-margin-left justify-content-center">
+      <div class="col-6 d-flex">
+
+         <div class="message-avatar-container">
+           <% if booking.messages.last.user.facebook_picture_url%>
+             <%= image_tag booking.messages.last.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+           <% elsif booking.messages.last.user.photo.attached? %>
+             <%= cl_image_tag booking.messages.last.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+           <% else %>
+             <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+           <% end %>
+         </div>
+         <div class="w-100 d-flex justify-content-between">
+          <div>
+            <span class="message-content-info"><%= booking.messages.last.user.first_name %><em><%= booking.messages.last.created_at.strftime("%b %e, %l:%M %p") %></em></span>
+            <p class="message-content"><%= booking.messages.last.content %></p>
+           </div>
+           <% if booking.confirmed == "declined" %>
+            <span class="indicator declined"> Declined </span>
+           <% elsif booking.confirmed == "accepted" %>
+           <span class="indicator accepted"> Accepted </span>
+           <% else "pending" %>
+           <span class="indicator pending"> Pending </span>
+           <% end %>
+
+         </div>
+       </div>
+     </div>
+    <% end %>
+  <% end %>
+
+</div>

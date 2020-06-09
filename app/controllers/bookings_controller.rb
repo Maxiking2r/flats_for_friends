@@ -29,10 +29,18 @@ class BookingsController < ApplicationController
     end
   end
 
-  def update
+  def accepted
     @booking = Booking.find(params[:id])
-    @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    @booking.confirmed = "accepted"
+    @booking.save
+    redirect_to dashboard_path
+  end
+
+  def declined
+    @booking = Booking.find(params[:id])
+    @booking.confirmed = "declined"
+    @booking.save
+    redirect_to dashboard_path
   end
 
   private

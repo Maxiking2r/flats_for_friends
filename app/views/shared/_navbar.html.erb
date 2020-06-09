@@ -24,12 +24,13 @@
           <% elsif current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
-            <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag "https://api.iconify.design/carbon:user-avatar-filled-alt.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <div class="dropdown-item">Hi <%=current_user.first_name %>!</div>
-            <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
-            <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Messages", "#", class: "dropdown-item" %>
+            <%= link_to "Bookings", "#", class: "dropdown-item" %>
+            <%= link_to "Manage listings", dashboard_path, class: "dropdown-item" %>
+            <%= link_to "User Account", edit_user_registration_path , class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
