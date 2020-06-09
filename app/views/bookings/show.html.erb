@@ -19,12 +19,11 @@
         <p> <strong>Capacity:</strong> <%= @booking.flat.number_of_rooms %> rooms</p>
         <p> <strong>Description:</strong> <%= @booking.flat.description %></p>
     </div>
-
-  <br>
-
+  </div>
+  </div>
 
   <div class="col-6">
-    <div id="map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-     </div>
+  <div id="map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+   </div>
   </div>
 </div>

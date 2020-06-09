@@ -37,3 +37,26 @@ p {
   font-size: 16px;
   line-height: 20px;
 }
+
+.main-container{
+  position: relative;
+  padding-bottom: 50px;
+  min-height: 100vh;
+}
+
+.violet-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.animation-box {
+  position: absolute;
+  width: 370px;
+  height: 255px;
+  right: 0px;
+  top: 0px;
+  text-align: center;
+}
+
