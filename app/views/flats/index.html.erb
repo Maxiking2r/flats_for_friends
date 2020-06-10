@@ -3,7 +3,7 @@
 <div class="container-fluid d-flex">
     <div class="cards">
       <% @flats.each do |flat| %>
-      <%= link_to flat_path(flat) do %>
+      <%= link_to flat_path(flat, dates: params[:search][:dates]) do %>
          <div class="card-flat">
             <% if flat.photos.attached? %>
               <%= cl_image_tag flat.photos.first.key %>
@@ -13,7 +13,7 @@
               <div class="card-flat-infos">
                 <div>
                   <div class="card-flat-name">
-                    <h3><%= flat.name %></h3>
+                    <h3><%= flat.name.capitalize %></h3>
                   </div>
                   <p>
                   <%= "#{flat.flat_type.capitalize} · " %>

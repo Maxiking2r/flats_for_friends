@@ -48,6 +48,11 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    if params[:dates]
+      @dates = params[:dates].split
+      @start_date = Date.parse(@dates[0]).strftime("%e %B %Y")
+      @end_date = Date.parse(@dates[2]).strftime("%e %B %Y")
+    end
   end
 
   def new
