@@ -5,9 +5,23 @@ class BookingsController < ApplicationController
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
     if params[:dates]
-      @dates = params[:dates].split
-      @start_date = Date.parse(@dates[0]).strftime("%e %B %Y")
-      @end_date = Date.parse(@dates[2]).strftime("%e %B %Y")
+    @dates = params[:dates].split
+    @start_date = Date.parse(@dates[0]).strftime("%e %B %Y")
+    @end_date = Date.parse(@dates[2]).strftime("%e %B %Y")
+    end
+  end
+
+
+  def show
+    @booking = Booking.find(params[:id])
+
+    @flat = [@booking.flat] # returns bookings with coordinates
+
+    @markers = @flat.map do |booking|
+      {
+        lat: booking.latitude,
+        lng: booking.longitude
+      }
     end
   end
 
@@ -30,9 +44,7 @@ class BookingsController < ApplicationController
     @bookings_as_owner = Booking.joins(:flat).where(flats: { user_id: current_user.id })
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-  end
+
 
 
   def accepted

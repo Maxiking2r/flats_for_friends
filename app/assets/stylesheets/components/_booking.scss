@@ -1,17 +1,41 @@
 .booking-image {
-  max-width: 100%;
-  max-height: 45%;
+  max-width: 400px;
+  max-height: 300px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin-bottom: 20px;
   border-radius: 15px;
   background: #F4F4F4;
   object-fit: cover;
   overflow: hidden;
+  position: relative;
 }
 
 .booking-image > img {
   object-fit: cover;
   width: 100%;
+}
+
+.booking-status {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  right: 10px;
+  bottom: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  // text-indent: 5px;
+  color: #FFFFFF;
+  background-color: #6FCF97;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  justify-content: center;
+  padding-top: 10px;
 }
 
 .card-booking {
@@ -20,13 +44,22 @@
   margin-bottom: 20px;
   border-radius: 15px;
   overflow: hidden;
-  padding: 16px;
+  // padding: 16px;
 }
+
+//.card-booking-image {
+  //background: #F4F4F4;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // border-radius: 15px 15px 0px 0px;
+  // overflow: hidden;
+  //padding: 16px;
+//}
 
 .card-booking > img {
   height: 130px;
   width: 100%;
   object-fit: cover;
+  border-radius: 15px 15px 0px 0px;
 }
 
 .card-booking h2 {
@@ -41,17 +74,17 @@
   margin: 0;
 }
 
-.card-booking .card-booking-infos {
+.card-booking-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
 }
-
-.card-booking-infos .card-booking-user {
+.card-booking-user {
   position: absolute;
   right: 10px;
   top: 10px;
   width: 40px;
+  bottom: 70px;
 }
