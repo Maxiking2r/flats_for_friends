@@ -14,7 +14,7 @@
   <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', class: 'd-none', id: 'photo-input', onChange: "imagesPreview(this, 'div.gallery')" }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo', direct_upload: true %>
   <%#= image_tag "", width: 150, class: "hidden", id: "photo-preview" %>
   <div class="gallery"></div>
-  <%= f.button :submit, 'Submit' %>
+  <%= f.button :submit, 'Submit'%>
 <% end %>
 <script>
     // Multiple images preview in browser

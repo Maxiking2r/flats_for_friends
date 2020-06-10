@@ -6,7 +6,7 @@
 
     <%= f.input :separation_allowed, required: false, placeholder: "1", label: "Degree of Separation", wrapper_html: { class: "search-input-item" }, input_html: { value: location } %>
 
-    <%= f.input :location, required: false, label: "City", placeholder: "Berlin", wrapper_html: {class: "search-input-item"}, input_html: { value: separation_allowed } %>
+    <%= f.input :location, required: true, label: "City", placeholder: "Berlin", wrapper_html: {class: "search-input-item"}, input_html: { value: separation_allowed } %>
 
     <%= f.input :dates, required: false, placeholder: "March 26th - April 4th", wrapper_html: {class: "search-input-item"}, input_html: { class: "datepicker-range" }, label: "Check-in/Check-out" %>
 
@@ -14,4 +14,5 @@
 
 
 </div>
-  <% end %>
+
+<% end %>
