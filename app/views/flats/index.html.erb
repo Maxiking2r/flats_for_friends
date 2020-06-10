@@ -5,18 +5,32 @@
       <% @flats.each do |flat| %>
       <%= link_to flat_path(flat, dates: params[:search][:dates]) do %>
          <div class="card-flat">
-            <img src="https://images.unsplash.com/photo-1560930950-5cc20e80e392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" />
+            <% if flat.photos.attached? %>
+              <%= cl_image_tag flat.photos.first.key %>
+            <% else %>
+              <img src="https://www.solidbackgrounds.com/images/3840x2160/3840x2160-dark-gray-solid-color-background.jpg">
+            <% end %>
               <div class="card-flat-infos">
                 <div>
-                  <h2><%= flat.name.capitalize %></h2>
+                  <div class="card-flat-name">
+                    <h3><%= flat.name.capitalize %></h3>
+                  </div>
                   <p>
                   <%= "#{flat.flat_type.capitalize} · " %>
-                  <%= "#{flat.number_of_rooms} rooms  · " %>
-                  <%= "#{flat.separation_allowed} ° separation" %>
-                  <h2 class="card-flat-pricing"><%= "#{flat.price_per_month}€/month" %></h2>
+                  <%= flat.number_of_rooms %> <%= "room".pluralize(flat.number_of_rooms).capitalize %> ·
                   </p>
+                  <div>
+                  <p><%= "#{flat.separation_allowed} ° separation" %></p>
+                  </div>
+                  <h2 class="card-flat-pricing"><%= "#{flat.price_per_month}€/month" %></h2>
                 </div>
-                <img class="card-flat-user avatar-bordered" src="<%= image_path("placeholder.jpg") %>">
+                <% if flat.user.facebook_picture_url%>
+                  <%= image_tag flat.user.facebook_picture_url, class: "card-flat-user avatar-bordered" %>
+                <% elsif flat.user.photo.attached? %>
+                  <%= cl_image_tag flat.user.photo.key, width: 40, height: 40, crop: :fill, class: "card-flat-user avatar-bordered" %>
+                <% else %>
+                  <span class="iconify card-flat-user avatar" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+                <% end %>
               </div>
           </div>
       <% end %>

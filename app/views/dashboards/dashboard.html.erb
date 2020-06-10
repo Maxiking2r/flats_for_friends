@@ -31,7 +31,12 @@
 
   <div class="row">
     <div class="col-12 card-dashboard">
+      <div class="d-flex justify-content-between">
       <h3 class="card-dashboard-title">Flats</h3>
+      <div>
+        <%= link_to "Add flat", new_flat_path, class: "btn add-button" %>
+      </div>
+      </div>
         <% @flats.each do |flat| %>
           <%= link_to flat_path(flat) do %>
             <div class="d-flex justify-content-between card-dashboard-item">
@@ -53,7 +58,6 @@
             </div>
           <% end %>
         <% end %>
-      <%= link_to "Add flat", new_flat_path, class: "btn add-button" %>
     </div>
   </div>
 </div>
