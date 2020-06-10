@@ -27,3 +27,19 @@
     </div>
   <% end %>
 </div>
+
+<div class="row no-margin-left justify-content-center">
+
+  <div class="col-6 d-flex justify-content-between">
+    <div class="btn-reply pt-4">
+      <%= simple_form_for [ @flat, @booking ] do |f| %>
+
+      <%= f.simple_fields_for :messages, Message.new do |messages_form| %>
+        <%= messages_form.input :content, label: "Message", class: "messages-form" %>
+      <% end %>
+
+        <%= f.submit "Send ✉️", class:"btn btn-rounded", data: {turbolinks: false} %>
+      <% end %>
+    </div>
+  </div>
+</div>
