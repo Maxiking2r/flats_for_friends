@@ -14,6 +14,15 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+
+    @flat = [@booking.flat] # returns bookings with coordinates
+
+    @markers = @flat.map do |booking|
+      {
+        lat: booking.latitude,
+        lng: booking.longitude
+      }
+    end
   end
 
   def create
