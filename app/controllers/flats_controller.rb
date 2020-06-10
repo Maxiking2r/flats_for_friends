@@ -36,7 +36,7 @@ class FlatsController < ApplicationController
       @flats = @flats.where.not(id: flat_ids_with_conflicting_bookings)
     end
 
-    @flats = Flat.geocoded
+    @flats = @flats.geocoded
 
     @markers = @flats.map do |flat|
       {
