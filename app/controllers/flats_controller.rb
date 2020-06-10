@@ -13,9 +13,27 @@ class FlatsController < ApplicationController
 
     if search_params[:dates].present?
       dates = search_params[:dates].split(" to ")
-      start_at = Date.parse(dates[0])
-      end_at = Date.parse(dates[1])
-      @flats = @flats.joins(:bookings).where.not("(? >= bookings.start_date AND ? <= bookings.end_date) OR (? >= bookings.start_date AND ? <= bookings.end_date)", start_at, start_at, end_at, end_at)
+      @start_at = Date.parse(dates[0])
+      @end_at = Date.parse(dates[1])
+      query = <<-SQL
+      (
+        (
+          start_date >= :start_at
+          AND
+          start_date <= :end_at
+        )
+        OR
+        (
+          end_date >= :start_at
+          AND
+          end_date <= :end_at
+        )
+      )
+      SQL
+      conflicting_bookings = Booking.where(confirmed: "confirmed")
+        .where(query, start_at: @start_at, end_at: @end_at)
+      flat_ids_with_conflicting_bookings = conflicting_bookings.pluck(:flat_id)
+      @flats = @flats.where.not(id: flat_ids_with_conflicting_bookings)
     end
 
     @flats = @flats.geocoded
