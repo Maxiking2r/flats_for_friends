@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.messages.last.user = current_user
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to chatrooms_path
     else
       render :new
     end
