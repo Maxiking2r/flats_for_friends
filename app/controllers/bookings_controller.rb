@@ -4,13 +4,13 @@ class BookingsController < ApplicationController
   def new
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
+    if params[:dates]
+    @dates = params[:dates].split
+    @start_date = Date.parse(@dates[0]).strftime("%e %B %Y")
+    @end_date = Date.parse(@dates[2]).strftime("%e %B %Y")
+    end
   end
 
-  def index
-    @user = current_user
-    @bookings_as_renter = @user.bookings
-    @bookings_as_owner = Booking.joins(:flat).where(flats: { user_id: current_user.id })
-  end
 
   def show
     @booking = Booking.find(params[:id])
@@ -37,6 +37,15 @@ class BookingsController < ApplicationController
       render :new
     end
   end
+
+  def index
+    @user = current_user
+    @bookings_as_renter = @user.bookings
+    @bookings_as_owner = Booking.joins(:flat).where(flats: { user_id: current_user.id })
+  end
+
+
+
 
   def accepted
     @booking = Booking.find(params[:id])
