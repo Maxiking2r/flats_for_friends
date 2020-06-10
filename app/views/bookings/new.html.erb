@@ -11,8 +11,8 @@
 
         <%= simple_form_for [ @flat, @booking ], html: { class: "col-12 d-flex justify-content-between" } do |f| %>
           <div class="col-6 no-margin-left">
-            <%= f.input :start_date, placeholder: "From" %>
-            <%= f.input :end_date, placeholder: "Until" %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
           </div>
 
         <div class="col-6 no-margin-left">
