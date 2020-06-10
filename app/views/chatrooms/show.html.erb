@@ -26,4 +26,13 @@
 
     </div>
   <% end %>
+
+  <div class="btn-message pt-4">
+  <%= f.simple_fields_for :messages, Message.new do |messages_form| %>
+    <%= messages_form.input :content, label: "Message", class: "messages-form" %>
+  <% end %>
+
+    <%= f.submit "Say Hi 👋", class:"btn btn-rounded", data: {turbolinks: false} %>
+    <% end %>
+</div>
 </div>

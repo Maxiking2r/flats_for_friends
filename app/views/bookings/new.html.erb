@@ -11,8 +11,8 @@
 
         <%= simple_form_for [ @flat, @booking ], html: { class: "col-12 d-flex justify-content-between" } do |f| %>
           <div class="col-6 no-margin-left">
-            <%= f.input :start_date, placeholder: "From" %>
-            <%= f.input :end_date, placeholder: "Until" %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
           </div>
 
         <div class="col-6 no-margin-left">
@@ -27,9 +27,9 @@
               <% end %>
             </div>
             <h3>Total Price</h3>
-            <p><%= @flat.price_per_month %>€/month</p>
+            <p><%= (Date.parse(@end_date) - Date.parse(@start_date)) %></p>
             <h3>Separation</h3>
-            <p><%= @flat.separation_allowed.ordinalize %> Degree</p>
+            <p><%= @flat.separation_allowed %> ° </p>
             <h3>Time</h3>
             <p> <%= @start_date %> - <%= @end_date %></p>
           </div>
@@ -54,12 +54,10 @@
           <%= f.simple_fields_for :messages, Message.new do |messages_form| %>
             <%= messages_form.input :content, label: "Message", class: "messages-form" %>
           <% end %>
-
             <%= f.submit "Say Hi 👋", class:"btn btn-rounded", data: {turbolinks: false} %>
             <% end %>
         </div>
       </div>
-
     </div>
   </div>
 </div>
