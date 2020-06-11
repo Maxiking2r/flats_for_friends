@@ -16,13 +16,13 @@
           <h2><%= booking.flat.name %></h2>
           <p> Start Date: <%= booking.start_date.strftime("%e %B %Y") %></p>
           <p> End Date: <%= booking.end_date.strftime("%e %B %Y") %></p>
-          <% if booking.confirmed = "accepted" %>
-            <p class = "green-status"><%= booking.confirmed.capitalize %></p>
-          <% elsif booking.confirmed = "declined"%>
-            <p class = "action-button decline-button"> Status: <%= booking.confirmed %></p>
-          <% else%>
-            <p class = "action-button respond-button"> Status: <%= booking.confirmed %></p>
-          <% end %>
+              <% if booking.confirmed == "confirmed" %>
+              <p class="indicator confirmed"><%= booking.confirmed.capitalize %></p>
+              <% elsif booking.confirmed == "declined" %>
+              <p class="indicator declined"><%= booking.confirmed.capitalize %></p>
+              <% else  %>
+              <p class="indicator pending"><%= booking.confirmed.capitalize %></p>
+              <% end %>
         </div>
         <% if @user.facebook_picture_url%>
           <%= image_tag @user.facebook_picture_url, class: "card-booking-user avatar-bordered" %>

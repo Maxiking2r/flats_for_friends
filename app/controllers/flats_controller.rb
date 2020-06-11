@@ -8,7 +8,7 @@ class FlatsController < ApplicationController
     end
 
     if search_params[:separation_allowed].present?
-      @flats = @flats.where("separation_allowed >= ?", "#{search_params[:separation_allowed]}")
+      @flats = @flats.where("separation_allowed <= ?", "#{search_params[:separation_allowed]}")
     end
 
     if search_params[:dates].present?
