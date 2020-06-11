@@ -31,11 +31,17 @@
   text-align: center;
   // text-indent: 5px;
   color: #FFFFFF;
-  background-color: #6FCF97;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 15px;
   justify-content: center;
   padding-top: 10px;
+
+  .booking-status-declined{
+    background-color: #EB5757;
+  }
+
+  .booking-status-pending {
+    background-color: $purple;
+  }
 }
 
 .card-booking {
@@ -45,6 +51,9 @@
   border-radius: 15px;
   overflow: hidden;
   // padding: 16px;
+  .indicator{
+    margin-top: 10px;
+  }
 }
 
 //.card-booking-image {
@@ -82,7 +91,6 @@
   position: relative;
 }
 .card-booking-user {
-  position: absolute;
   right: 10px;
   top: 10px;
   width: 40px;

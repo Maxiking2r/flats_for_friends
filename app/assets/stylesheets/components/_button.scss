@@ -49,6 +49,8 @@
   font-size: 18px;
   line-height: 24px;
   height: fit-content;
+  width: fit-content;
+
 
   &.confirmed {
     background-color: #6FCF97;
@@ -68,11 +70,15 @@
 }
 
 .btn-reply {
-  width: 80%;
+  width: 100%;
 }
 
 .btn-facebook {
   background-color: #13A0F9;
+}
+
+.icon-messages {
+  color: #00ACFC;
 }
 
 

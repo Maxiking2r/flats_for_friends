@@ -7,15 +7,23 @@
             <% if @booking.flat.photos.first %>
               <%= cl_image_tag @booking.flat.photos.first.key, crop: :fill %>
             <% end %>
+
             <div class="booking-status">
-            <p><%= @booking.confirmed %></p>
+              <% if @booking.confirmed == "confirmed" %>
+              <p class="indicator confirmed"><%= @booking.confirmed.capitalize %></p>
+              <% elsif @booking.confirmed == "declined" %>
+              <p class="indicator declined"><%= @booking.confirmed.capitalize %></p>
+              <% else  %>
+              <p class="indicator pending"><%= @booking.confirmed.capitalize %></p>
+              <% end %>
             </div>
+
           </div>
           <h3><%= @booking.flat.name %></h3>
           <div class="d-flex justify-content-between">
             <div>
               <p> 📍 <%= @booking.flat.location %></p>
-              <p> 🗓 <%= @booking.start_date %> - <%= @booking.end_date %></p>
+              <p> 🗓 <%= @booking.start_date.strftime("%e %B %Y") %> - <%= @booking.end_date.strftime("%e %B %Y") %></p>
             </div>
             <div class="card-apartment-infos">
               <% if current_user.facebook_picture_url%>

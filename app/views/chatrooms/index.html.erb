@@ -1,7 +1,7 @@
 <div class="container pt-4">
   <div class="row no-margin-left justify-content-center">
     <div class="col-6 chat-title">
-      <h2> ✉️ Messages </h2>
+      <h2> ✉️ Conversations </h2>
     </div>
   </div>
 
@@ -18,18 +18,18 @@
          <div class="col-6 d-flex">
 
             <div class="message-avatar-container">
-              <% if booking.messages.last.user.facebook_picture_url%>
-                <%= image_tag booking.messages.last.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-              <% elsif booking.messages.last.user.photo.attached? %>
-                <%= cl_image_tag booking.messages.last.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% if booking.user.facebook_picture_url%>
+                <%= image_tag booking.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% elsif booking.user.photo.attached? %>
+                <%= cl_image_tag booking.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <% else %>
                 <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <% end %>
             </div>
             <div class="w-100 d-flex justify-content-between">
              <div>
-               <span class="message-content-info"><%= booking.messages.last.user.first_name %><em><%= booking.messages.last.created_at.strftime("%b %e, %l:%M %p") %></em></span>
-               <p class="message-content"><%= booking.messages.last.content %></p>
+               <span class="message-content-info"><%= booking.user.first_name %><em><%= booking.messages.last.created_at.strftime("%b %e, %l:%M %p") %></em></span>
+               <p class="message-content"> <% if booking.messages.last.user == current_user %> <i class="fas fa-check-double icon-messages"></i> <% end %><%= booking.messages.last.content %></p>
               </div>
               <% if booking.confirmed == "declined" %>
                <span class="indicator declined"> Declined </span>
@@ -59,18 +59,18 @@
       <div class="col-6 d-flex">
 
          <div class="message-avatar-container">
-           <% if booking.messages.last.user.facebook_picture_url%>
-             <%= image_tag booking.messages.last.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-           <% elsif booking.messages.last.user.photo.attached? %>
-             <%= cl_image_tag booking.messages.last.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+           <% if booking.flat.user.facebook_picture_url%>
+             <%= image_tag booking.flat.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+           <% elsif booking.flat.user.photo.attached? %>
+             <%= cl_image_tag booking.flat.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
            <% else %>
              <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
            <% end %>
          </div>
          <div class="w-100 d-flex justify-content-between">
           <div>
-            <span class="message-content-info"><%= booking.messages.last.user.first_name %><em><%= booking.messages.last.created_at.strftime("%b %e, %l:%M %p") %></em></span>
-            <p class="message-content"><%= booking.messages.last.content %></p>
+            <span class="message-content-info"><%= booking.flat.user.first_name %><em><%= booking.messages.last.created_at.strftime("%b %e, %l:%M %p") %></em></span>
+            <p class="message-content"> <% if booking.messages.last.user == current_user %> <i class="fas fa-check-double icon-messages"></i> <% end %> <%= booking.messages.last.content %></p>
            </div>
            <% if booking.confirmed == "declined" %>
             <span class="indicator declined"> Declined </span>

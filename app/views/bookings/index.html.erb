@@ -1,7 +1,6 @@
 <div class="container", style="margin-top:20px">
   <h1>🗓 Bookings</h1>
-  <h3>Friends flats for me 🛌</h3>
-  <div class="row justify-content-center", style="margin-top:20px">
+  <div class="row", style="margin-top:20px">
     <% @bookings_as_renter.each do |booking| %>
     <div class="col-4">
       <%= link_to booking_path(booking) do %>
@@ -15,9 +14,15 @@
       <div class="card-booking-infos">
         <div class="card-booking-detailed-infos">
           <h2><%= booking.flat.name %></h2>
-          <p> Start Date: <%= booking.start_date %></p>
-          <p> End Date: <%= booking.end_date %></p>
-          <p> Status: <%= booking.confirmed %></p>
+          <p> Start Date: <%= booking.start_date.strftime("%e %B %Y") %></p>
+          <p> End Date: <%= booking.end_date.strftime("%e %B %Y") %></p>
+              <% if booking.confirmed == "confirmed" %>
+              <p class="indicator confirmed"><%= booking.confirmed.capitalize %></p>
+              <% elsif booking.confirmed == "declined" %>
+              <p class="indicator declined"><%= booking.confirmed.capitalize %></p>
+              <% else  %>
+              <p class="indicator pending"><%= booking.confirmed.capitalize %></p>
+              <% end %>
         </div>
         <% if @user.facebook_picture_url%>
           <%= image_tag @user.facebook_picture_url, class: "card-booking-user avatar-bordered" %>
