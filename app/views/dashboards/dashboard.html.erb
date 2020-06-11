@@ -3,8 +3,8 @@
     <div class="col-12 card-dashboard">
       <h3 class="card-dashboard-title">Bookings</h3>
         <% @bookings_as_owner.each do |booking| %>
-          <%= link_to booking_path(booking) do %>
             <div class="d-flex justify-content-between card-dashboard-item">
+          <%= link_to booking_path(booking) do %>
               <div class="d-flex">
                 <% if booking.user.facebook_picture_url%>
                   <%= image_tag booking.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -19,9 +19,11 @@
                 </div>
               </div>
               <div class="d-flex booking-actions">
-                <%= link_to "Respond", chatroom_path(booking.id), class: "action-button respond-button"%>
-                <%= link_to "Accept", accepted_booking_path(booking.id), method: :patch, class: "action-button accept-button" %>
-                <%= link_to "Decline", declined_booking_path(booking.id), method: :patch, class: "action-button decline-button" %>
+                <% if booking.confirmed == "pending" %>
+                  <%= link_to "Respond", chatroom_path(booking.id), class: "action-button respond-button"%>
+                  <%= link_to "Accept", accepted_booking_path(booking.id), method: :patch, class: "action-button accept-button" %>
+                  <%= link_to "Decline", declined_booking_path(booking.id), method: :patch, class: "action-button decline-button" %>
+                <% end %>
               </div>
             </div>
         <% end %>

@@ -48,19 +48,62 @@ const input1 = document.getElementById('booking_start_date_1i');
 const input2 = document.getElementById('booking_start_date_2i');
 const input3 = document.getElementById('booking_start_date_3i');
 
+const getMonths = (number) => {
+  let month = "january"
+ switch (number) {
+  case "1":
+    month = "January";
+    break;
+  case "2":
+      month = "February";
+    break;
+  case "3":
+      month = "March";
+    break;
+  case "4":
+      month = "April";
+    break;
+  case "5":
+      month = "May";
+    break;
+  case "6":
+      month = "June";
+    break;
+  case "7":
+      month = "July";
+    break;
+  case "8":
+      month = "August";
+    break;
+  case "9":
+      month = "September";
+    break;
+  case "10":
+      month = "October";
+    break;
+  case "11":
+      month = "November";
+    break;
+  case "12":
+      month = "December";
+    break;
+}
+return month
+}
+
 input1.addEventListener('change', (event) => {
   const result = document.getElementById('start_date_2');
-  result.textContent = input3.value + "/" + input2.value + "/" + event.target.value;
+  result.textContent = input3.value + " " + getMonths(input2.value) + " " + event.target.value;
 });
 
 input2.addEventListener('change', (event) => {
   const result = document.getElementById('start_date_2');
-  result.textContent = input3.value + "/" + event.target.value + "/" + input1.value;
+  result.textContent = input3.value + " " + getMonths(event.target.value) + " " + input1.value;
 });
 
 input3.addEventListener('change', (event) => {
   const result = document.getElementById('start_date_2');
-  result.textContent = event.target.value + "/" + input2.value + "/" + input1.value;
+  result.textContent = event.target.value + " " + getMonths(input2.value)+ " " + input1.value;
 });
 
 const input4 = document.getElementById('booking_end_date_1i');
@@ -69,15 +112,15 @@ const input6 = document.getElementById('booking_end_date_3i');
 
 input4.addEventListener('change', (event) => {
   const result = document.getElementById('end_date_2');
-  result.textContent = input6.value + "/" + input5.value + "/" + event.target.value;
+  result.textContent = input6.value + " " + getMonths(input5.value) + " " + event.target.value;
 });
 
 input5.addEventListener('change', (event) => {
   const result = document.getElementById('end_date_2');
-  result.textContent = input6.value + "/" + event.target.value + "/" + input4.value;
+  result.textContent = input6.value + " " + getMonths(event.target.value) + " " + input4.value;
 });
 
 input6.addEventListener('change', (event) => {
   const result = document.getElementById('end_date_2');
-  result.textContent = event.target.value + "/" + input5.value + "/" + input4.value;
+  result.textContent = event.target.value + " " + getMonths(input5.value) + " " + input4.value;
 });
