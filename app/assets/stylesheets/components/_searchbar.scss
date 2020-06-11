@@ -44,7 +44,10 @@
     &:hover {
       border-color: lightgrey;
     }
-    :after {
+
+  }
+
+    .search_separation_allowed:after, .search_location:after {
       content: "";
       background-color: lightgrey;
       position: absolute;
@@ -53,6 +56,18 @@
       height: 50%;
       width: 3px;
     }
+}
+
+.algolia-places {
+  min-height: 40px;
+  .form-control {
+    height: 40px;
+  }
+  .ap-dataset-places {
+    height: auto;
+  }
+  .ap-icon-pin svg {
+    top: 45% !important;
   }
 }
 
@@ -85,10 +100,64 @@
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  opacity: 0.8;
-  //height: 38px;
+
   input {
     min-height: 40px;
   }
+}
+
+
+
+.hover-message label {
+  position: relative;
+  text-decoration: none;
+
+}
+.hover-message label:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 20%;
+  background: lightgrey;
+  padding: 5px 15px;
+  color: black;
+  -webkit-border-radius: 10px;
+  -moz-border-radius : 10px;
+  border-radius : 10px;
+  white-space: nowrap;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition : all 0.4s ease;
+  transition : all 0.4s ease;
+}
+.hover-message label:before {
+  content: "How many friends of friends?";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 20px solid lightgrey;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition : all 0.4s ease;
+  transition : all 0.4s ease;
+  opacity: 0;
+  left: 30%;
+  bottom: 90%;
+}
+.hover-message label:hover:after {
+  content: "How many friends of friends?";
+  opacity: 1;
+  left: -6px;
+  display: flex;
+  align-items: center;
+
+}
+
+.hover-message label:hover:before {
+  bottom: 70%;
+}
+.hover-message label:hover:after, a:hover:before {
+  opacity: 1;
 }
 
