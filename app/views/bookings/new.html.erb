@@ -26,8 +26,8 @@
               <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
               <% end %>
             </div>
-            <h3>Total Price</h3>
-            <p><%= ((((Date.parse(@end_date) - Date.parse(@start_date)).to_i).to_f)*@flat.price_per_month)/30 %>€</p>
+            <h3>Price per month</h3>
+            <p><%=@flat.price_per_month%>€</p>
             <h3>Separation</h3>
             <p><%= @flat.separation_allowed %> ° </p>
             <h3>Time</h3>
