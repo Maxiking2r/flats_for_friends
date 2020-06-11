@@ -43,3 +43,41 @@ document.addEventListener('turbolinks:load', () => {
 })
 
 import "../plugins/flatpickr"
+
+const input1 = document.getElementById('booking_start_date_1i');
+const input2 = document.getElementById('booking_start_date_2i');
+const input3 = document.getElementById('booking_start_date_3i');
+
+input1.addEventListener('change', (event) => {
+  const result = document.getElementById('start_date_2');
+  result.textContent = input3.value + "/" + input2.value + "/" + event.target.value;
+});
+
+input2.addEventListener('change', (event) => {
+  const result = document.getElementById('start_date_2');
+  result.textContent = input3.value + "/" + event.target.value + "/" + input1.value;
+});
+
+input3.addEventListener('change', (event) => {
+  const result = document.getElementById('start_date_2');
+  result.textContent = event.target.value + "/" + input2.value + "/" + input1.value;
+});
+
+const input4 = document.getElementById('booking_end_date_1i');
+const input5 = document.getElementById('booking_end_date_2i');
+const input6 = document.getElementById('booking_end_date_3i');
+
+input4.addEventListener('change', (event) => {
+  const result = document.getElementById('end_date_2');
+  result.textContent = input6.value + "/" + input5.value + "/" + event.target.value;
+});
+
+input5.addEventListener('change', (event) => {
+  const result = document.getElementById('end_date_2');
+  result.textContent = input6.value + "/" + event.target.value + "/" + input4.value;
+});
+
+input6.addEventListener('change', (event) => {
+  const result = document.getElementById('end_date_2');
+  result.textContent = event.target.value + "/" + input5.value + "/" + input4.value;
+});

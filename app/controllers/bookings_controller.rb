@@ -3,11 +3,13 @@ class BookingsController < ApplicationController
 
   def new
     @flat = Flat.find(params[:flat_id])
-    @booking = Booking.new
     if params[:dates]
-    @dates = params[:dates].split
-    @start_date = Date.parse(@dates[0]).strftime("%e %B %Y")
-    @end_date = Date.parse(@dates[2]).strftime("%e %B %Y")
+      @dates = params[:dates].split
+      @start_date = Date.parse(@dates[0]).strftime("%e %B %Y")
+      @end_date = Date.parse(@dates[2]).strftime("%e %B %Y")
+      @booking = Booking.new(start_date: @start_date, end_date: @end_date)
+    else
+      @booking = Booking.new
     end
   end
 
@@ -76,6 +78,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, messages_attributes: [:content])
+    params.require(:booking).permit(:start_date, :end_date,messages_attributes: [:content])
   end
 end

@@ -7,31 +7,36 @@
 
 
       <div class="col-12 d-flex justify-content-between no-margin-left">
-
-
         <%= simple_form_for [ @flat, @booking ], html: { class: "col-12 d-flex justify-content-between" } do |f| %>
           <div class="col-6 no-margin-left">
+            <div id="start_date">
             <%= f.input :start_date %>
+            </div>
             <%= f.input :end_date %>
           </div>
 
         <div class="col-6 no-margin-left">
           <div class="textbox-squared">
             <div class="avatar-bordered" id="avatar-right">
-              <% if current_user.facebook_picture_url%>
+              <% if @flat.user.facebook_picture_url%>
                 <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-              <% elsif current_user.photo.attached? %>
+              <% elsif @flat.user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <% else %>
               <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
               <% end %>
             </div>
             <h3>Total Price</h3>
-            <p><%= (Date.parse(@end_date) - Date.parse(@start_date)) %></p>
+            <p><%= ((((Date.parse(@end_date) - Date.parse(@start_date)).to_i).to_f)*@flat.price_per_month)/30 %>€</p>
             <h3>Separation</h3>
             <p><%= @flat.separation_allowed %> ° </p>
             <h3>Time</h3>
-            <p> <%= @start_date %> - <%= @end_date %></p>
+            <div id="start_date_2">
+            <p> <%= @start_date %> - </p>
+            </div>
+            <div id="end_date_2">
+              <br><%= @end_date %></p>
+            </div>
           </div>
         </div>
 
