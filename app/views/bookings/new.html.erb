@@ -30,10 +30,10 @@
             <p><%=@flat.price_per_month%>€/month</p>
             <h3>Handshakes</h3>
             <p><% @flat.separation_allowed.times do %> 🤝 <% end %></p>
-            <h3>Time</h3>
-            <div class="d-flex">
-              <p id="start_date_2"><%= @start_date %>-</p>
-              <p id="end_date_2"><%= @end_date %></p>
+            <h3>Rental Period</h3>
+            <div class="d-flex justify-content-between">
+              <p id="start_date_2"><%= @start_date %></p> <p>-</p>
+              <p id="end_date_2"> <%= @end_date %> </p>
             </div>
           </div>
         </div>
