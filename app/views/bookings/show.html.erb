@@ -1,40 +1,42 @@
 <div class="container">
-  <h2>Your Booking 💌</h2>
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center", style="margin-top:20px">
       <div class="col-6">
-        <div class="booking-image">
-          <% if @booking.flat.photos.first %>
-          <%= cl_image_tag @booking.flat.photos.first.key, crop: :fill %>
-          <% end %>
-        </div>
+          <div class="booking-image">
+            <% if @booking.flat.photos.first %>
+              <%= cl_image_tag @booking.flat.photos.first.key, crop: :fill %>
+            <% end %>
+            <div class="booking-status">
+            <p><%= @booking.confirmed %></p>
+            </div>
+          </div>
           <h3><%= @booking.flat.name %></h3>
-        <div class="d-flex justify-content-between">
-          <div>
-            <p> 📍 <%= @booking.flat.location %></p>
-            <p> 🗓 <%= @booking.start_date %> - <%= @booking.end_date %></p>
+          <div class="d-flex justify-content-between">
+            <div>
+              <p> 📍 <%= @booking.flat.location %></p>
+              <p> 🗓 <%= @booking.start_date %> - <%= @booking.end_date %></p>
+            </div>
+            <div class="card-apartment-infos">
+              <% if current_user.facebook_picture_url%>
+                <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% elsif current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% else %>
+              <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+              <% end %>
+              <p class="arrow-avatar"> &#8596; </p>
+              <img class="avatar-bordered avatar-grey" alt="avatar-bordered-grey" src="https://media-exp1.licdn.com/dms/image/C4D03AQEf6XT0OlY0Qw/profile-displayphoto-shrink_400_400/0?e=1596672000&v=beta&t=FDfyhDNqGmzTx8ts3X25GZkfsTgU2WMHQOtIE7ickiI" />  <p class="arrow-avatar"> &#8596; </p>
+              <% if @booking.flat.user.facebook_picture_url%>
+                <%= image_tag @booking.flat.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% elsif @booking.flat.user.photo.attached? %>
+                <%= cl_image_tag @booking.flat.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <% else %>
+              <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+              <% end %>
+            </div>
           </div>
-          <div class="card-apartment-infos">
-            <% if current_user.facebook_picture_url%>
-              <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <% elsif current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <% else %>
-            <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
-            <% end %>
-            <p class="arrow-avatar"> &#8596; </p>
-            <img class="avatar-bordered avatar-grey" alt="avatar-bordered-grey" src="https://media-exp1.licdn.com/dms/image/C4D03AQEf6XT0OlY0Qw/profile-displayphoto-shrink_400_400/0?e=1596672000&v=beta&t=FDfyhDNqGmzTx8ts3X25GZkfsTgU2WMHQOtIE7ickiI" />  <p class="arrow-avatar"> &#8596; </p>
-            <% if @booking.flat.user.facebook_picture_url%>
-              <%= image_tag @booking.flat.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <% elsif @booking.flat.user.photo.attached? %>
-              <%= cl_image_tag @booking.flat.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <% else %>
-            <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
-            <% end %>
-          </div>
-        </div>
         <br>
-        <div class="card-booking col-6">
+        <div class="card-booking col-6", style="padding: 16px">
           <h2>Price</h2>
           <p><%= @booking.flat.price_per_month %>€/month</p>
           <h2>Separation</h2>

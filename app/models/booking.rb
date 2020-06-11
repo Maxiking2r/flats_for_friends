@@ -6,6 +6,8 @@ class Booking < ApplicationRecord
   # validates :end_date_after_start_date
   validates :confirmed, inclusion: { in: %w(declined pending confirmed) }
   accepts_nested_attributes_for :messages
+  # geocoded_by :address
+  # after_validation :geocode, if: :will_save_change_to_address?
 
   def booked_date_range
     { from: :start_date, to: :end_date }

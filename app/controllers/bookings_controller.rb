@@ -13,6 +13,20 @@ class BookingsController < ApplicationController
     end
   end
 
+
+  def show
+    @booking = Booking.find(params[:id])
+
+    @flat = [@booking.flat] # returns bookings with coordinates
+
+    @markers = @flat.map do |booking|
+      {
+        lat: booking.latitude,
+        lng: booking.longitude
+      }
+    end
+  end
+
   def create
     @booking = Booking.new(booking_params)
     @flat = Flat.find(params[:flat_id])
@@ -32,9 +46,7 @@ class BookingsController < ApplicationController
     @bookings_as_owner = Booking.joins(:flat).where(flats: { user_id: current_user.id })
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-  end
+
 
 
   def accepted
@@ -49,6 +61,18 @@ class BookingsController < ApplicationController
     @booking.confirmed = "declined"
     @booking.save
     redirect_to dashboard_path
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @message = Message.new(content: params["booking"]["messages_attributes"]["0"]["content"])
+    @message.user = current_user
+    @message.booking = @booking
+    if @message.save
+      redirect_to chatroom_path(@booking)
+    else
+      render "chatrooms/show"
+    end
   end
 
   private

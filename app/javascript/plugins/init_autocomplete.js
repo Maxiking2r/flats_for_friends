@@ -5,6 +5,10 @@ const initAutocomplete = () => {
   if (addressInput) {
     places({ container: addressInput });
   }
+  const locationInput = document.getElementById('flat_location');
+  if (locationInput) {
+    places({ container: locationInput });
+  }
 };
 
 export { initAutocomplete };

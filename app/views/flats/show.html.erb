@@ -34,15 +34,16 @@
     <div class="row">
       <div class="col-9">
         <div class="d-flex justify-content-between">
-          <div class="d-flex align-items-center">🏡 <%= @flat.flat_type.capitalize %> 🚪 <%= @flat.number_of_rooms %> <%= "room".pluralize(@flat.number_of_rooms).capitalize %> 🌝 <%= @flat.user.first_name.capitalize %> 🔗 Frederike</div>
+          <div class="d-flex align-items-center">🏡 <%= @flat.flat_type.capitalize %> 🚪 <%= @flat.number_of_rooms %> <%= "room".pluralize(@flat.number_of_rooms).capitalize %> 🔑 <%= @flat.user.first_name.capitalize %> 🔗 Frederike</div>
 
           <div class="card-apartment-infos">
+              <% if current_user != @flat.user %>
               <% if current_user.facebook_picture_url%>
                 <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <% elsif current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <% else %>
-              <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+                <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
               <% end %>
               <p class="arrow-avatar"> &#8596; </p>
               <img class="avatar-bordered avatar-grey" alt="avatar-bordered-grey" src="https://media-exp1.licdn.com/dms/image/C4D03AQEf6XT0OlY0Qw/profile-displayphoto-shrink_400_400/0?e=1596672000&v=beta&t=FDfyhDNqGmzTx8ts3X25GZkfsTgU2WMHQOtIE7ickiI" />  <p class="arrow-avatar"> &#8596; </p>
@@ -52,7 +53,8 @@
               <% elsif @flat.user.photo.attached? %>
                 <%= cl_image_tag @flat.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <% else %>
-              <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+                <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+              <% end %>
               <% end %>
 
             </div>
@@ -66,7 +68,16 @@
 
       <div class="col-3">
         <div class="textbox-sm">
-          <img class="avatar-bordered" id="avatar-right" alt="avatar-bordered avatar-grey" src="https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/41876041_1812280798820387_4642206962270863360_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=kEwSxnQGVYEAX-C126-&_nc_ht=scontent-frt3-1.xx&oh=126397d106e5a61fb7fa9b8cf69f4746&oe=5F0059F5" />
+          <div class="avatar-bordered" id="avatar-right">
+            <% if @flat.user.facebook_picture_url%>
+              <%= image_tag @flat.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% elsif @flat.user.photo.attached? %>
+              <%= cl_image_tag @flat.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% else %>
+              <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
+            <% end %>
+          </div>
+
           <h3>Price</h3>
           <p><%= @flat.price_per_month %>€/month</p>
           <h3>Separation</h3>
@@ -74,7 +85,7 @@
           <h3>Rental Period</h3>
           <p> <%= @start_date %> - <%= @end_date %> </p>
           <div class="d-flex justify-content-center">
-            <%= link_to "Say Hi 👋", new_flat_booking_path(@flat, :dates => params[:dates]), class:"btn btn-rounded", data: {turbolinks: false} %>
+            <%= link_to "Book 🤝", new_flat_booking_path(@flat), class:"btn btn-rounded", data: {turbolinks: false} %>
           </div>
         </div>
       </div>
