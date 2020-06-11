@@ -4,6 +4,7 @@
   <%= simple_form_for :search, url: flats_path, method: "get" do |f| %>
   <div class = "d-flex form-inline search-input-container justify-content-center align-items-center">
 
+
       <%= f.input :separation_allowed, required: false, placeholder: "1", label: "Handshakes", wrapper_html: { class: "search-input-item" }, input_html: { value: location } %>
 
       <%= f.input :location, required: true, label: "City", placeholder: "Berlin", wrapper_html: {class: "search-input-item"}, input_html: { value: separation_allowed } %>
