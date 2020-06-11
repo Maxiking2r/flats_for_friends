@@ -8,7 +8,7 @@
   <%= f.input :flat_type, collection: ["flat", "room"] %>
   <%= f.input :number_of_rooms %>
   <%= f.input :price_per_month %>
-  <%= f.input :separation_allowed %>
+  <%= f.input :separation_allowed, label: "Handshakes 🤝" %>
 <!--   Single image preview
  -->  <%#= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', class: 'd-none', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
   <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', class: 'd-none', id: 'photo-input', onChange: "imagesPreview(this, 'div.gallery')" }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo', direct_upload: true %>

@@ -29,13 +29,11 @@
             <h3>Price</h3>
             <p><%=@flat.price_per_month%>€/month</p>
             <h3>Handshakes</h3>
-            <p><%= @flat.separation_allowed %> ° </p>
+            <p><% @flat.separation_allowed.times do %> 🤝 <% end %></p>
             <h3>Time</h3>
-            <div id="start_date_2">
-            <p> <%= @start_date %> - </p>
-            </div>
-            <div id="end_date_2">
-              <br><%= @end_date %></p>
+            <div class="d-flex">
+              <p id="start_date_2"><%= @start_date %>-</p>
+              <p id="end_date_2"><%= @end_date %></p>
             </div>
           </div>
         </div>

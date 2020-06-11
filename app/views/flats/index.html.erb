@@ -20,7 +20,7 @@
                   <%= flat.number_of_rooms %> <%= "room".pluralize(flat.number_of_rooms).capitalize %> ·
                   </p>
                   <div>
-                  <p><%= "#{flat.separation_allowed} ° separation" %></p>
+                  <p>Handshakes<% flat.separation_allowed.times do %> 🤝 <% end %></p>
                   </div>
                   <h2 class="card-flat-pricing"><%= "#{flat.price_per_month}€/month" %></h2>
                 </div>
