@@ -24,7 +24,7 @@
         <% elsif @user.photo.attached? %>
           <%= cl_image_tag @user.photo.key, width: 40, height: 40, crop: :fill, class: "card-booking-user avatar-bordered" %>
         <% else %>
-          <%= image_tag "http://placehold.it/30x30", class: "card-booking-user avatar-bordered" %>
+          <%= image_tag "https://api.iconify.design/carbon:user-avatar-filled-alt.svg", class: "card-booking-user avatar-bordered" %>
         <% end %>
       </div>
       </div>
