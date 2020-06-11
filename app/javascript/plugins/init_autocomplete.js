@@ -9,6 +9,10 @@ const initAutocomplete = () => {
   if (locationInput) {
     places({ container: locationInput });
   }
+  const cityInput = document.getElementById('search_location');
+  if (cityInput) {
+    places({ container: cityInput });
+  }
 };
 
 export { initAutocomplete };
