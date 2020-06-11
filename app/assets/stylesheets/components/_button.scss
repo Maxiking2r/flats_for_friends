@@ -50,7 +50,7 @@
   line-height: 24px;
   height: fit-content;
 
-  &.accepted {
+  &.confirmed {
     background-color: #6FCF97;
   }
 
@@ -67,7 +67,12 @@
   width: 47.5%;
 }
 
+.btn-reply {
+  width: 80%;
+}
+
 .btn-facebook {
   background-color: #13A0F9;
 }
+
 

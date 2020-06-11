@@ -19,7 +19,7 @@
                 </div>
               </div>
               <div class="d-flex booking-actions">
-                <%= link_to "Respond","#", class: "action-button respond-button"%>
+                <%= link_to "Respond", chatroom_path(booking.id), class: "action-button respond-button"%>
                 <%= link_to "Accept", accepted_booking_path(booking.id), method: :patch, class: "action-button accept-button" %>
                 <%= link_to "Decline", declined_booking_path(booking.id), method: :patch, class: "action-button decline-button" %>
               </div>

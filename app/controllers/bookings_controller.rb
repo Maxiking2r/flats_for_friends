@@ -61,6 +61,18 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    @message = Message.new(content: params["booking"]["messages_attributes"]["0"]["content"])
+    @message.user = current_user
+    @message.booking = @booking
+    if @message.save
+      redirect_to chatroom_path(@booking)
+    else
+      render "chatrooms/show"
+    end
+  end
+
   private
 
   def booking_params
