@@ -1,27 +1,30 @@
-<div class="container">
+<div class="container", style="margin-top:20px">
   <h1>🗓 Bookings</h1>
   <h3>Friends flats for me 🛌</h3>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center", style="margin-top:20px">
     <% @bookings_as_renter.each do |booking| %>
     <div class="col-4">
       <%= link_to booking_path(booking) do %>
-      <div class="card-flat">
-      <% if booking.flat.photos.first %>
-      <%= cl_image_tag booking.flat.photos.first.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-      <div class="card-flat-infos">
-        <div>
-          <span><%= booking.flat.name %></span>
+      <div class="card-booking">
+        <% if booking.flat.photos.first %>
+          <%= cl_image_tag booking.flat.photos.first.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <%= image_tag "https://images.pexels.com/photos/2459/stairs-home-loft-lifestyle.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" %>
+          <%#= image_tag "http://placehold.it/750x1260", class: "booking-image" %>
+        <% end %>
+      <div class="card-booking-infos">
+        <div class="card-booking-detailed-infos">
+          <h2><%= booking.flat.name %></h2>
           <p> Start Date: <%= booking.start_date %></p>
           <p> End Date: <%= booking.end_date %></p>
           <p> Status: <%= booking.confirmed %></p>
         </div>
         <% if @user.facebook_picture_url%>
-          <%= image_tag @user.facebook_picture_url, class: "card-flat-user avatar-bordered" %>
+          <%= image_tag @user.facebook_picture_url, class: "card-booking-user avatar-bordered" %>
         <% elsif @user.photo.attached? %>
-          <%= cl_image_tag @user.photo.key, width: 40, height: 40, crop: :fill, class: "card-flat-user avatar-bordered" %>
+          <%= cl_image_tag @user.photo.key, width: 40, height: 40, crop: :fill, class: "card-booking-user avatar-bordered" %>
         <% else %>
-          <%= image_tag "http://placehold.it/30x30", class: "card-flat-user avatar-bordered" %>
+          <%= image_tag "http://placehold.it/30x30", class: "card-booking-user avatar-bordered" %>
         <% end %>
       </div>
       </div>

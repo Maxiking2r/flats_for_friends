@@ -48,6 +48,7 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    @booking = Booking.new
     if params[:dates]
       @dates = params[:dates].split
       @start_date = Date.parse(@dates[0]).strftime("%e %B %Y")
