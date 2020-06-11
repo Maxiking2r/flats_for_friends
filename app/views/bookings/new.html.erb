@@ -19,9 +19,9 @@
           <div class="textbox-squared">
             <div class="avatar-bordered" id="avatar-right">
               <% if @flat.user.facebook_picture_url%>
-                <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                <%= image_tag @flat.user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <% elsif @flat.user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                <%= cl_image_tag @flat.user.photo.key, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
               <% else %>
               <span class="iconify" data-inline="false" data-icon="bi:person-circle" style="font-size: 40px;"></span>
               <% end %>
