@@ -74,8 +74,8 @@
            </div>
            <% if booking.confirmed == "declined" %>
             <span class="indicator declined"> Declined </span>
-           <% elsif booking.confirmed == "accepted" %>
-           <span class="indicator accepted"> Accepted </span>
+           <% elsif booking.confirmed == "confirmed" %>
+           <span class="indicator confirmed"> Confirmed </span>
            <% else "pending" %>
            <span class="indicator pending"> Pending </span>
            <% end %>
