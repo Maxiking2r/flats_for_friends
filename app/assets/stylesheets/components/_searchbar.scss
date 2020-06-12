@@ -146,12 +146,15 @@
   bottom: 90%;
 }
 .hover-message label:hover:after {
-  content: "How many friends of friends?";
+  content: "How many handshakes should it take at the most to get to know the owner?";
   opacity: 1;
-  left: -6px;
+  left: -10px;
+  bottom: -90px;
+  white-space: pre-line;
+  width: 211px;
   display: flex;
   align-items: center;
-
+  z-index: 10;
 }
 
 .hover-message label:hover:before {

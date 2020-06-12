@@ -2,16 +2,16 @@
 <% separation_allowed = params[:search][:separation_allowed] if !params[:search].nil? %>
 
   <%= simple_form_for :search, url: flats_path, method: "get" do |f| %>
-  <div class = "d-flex form-inline search-input-container justify-content-center align-items-center">
+  <div class = "d-flex form-inline search-input-container justify-content-center align-items-center" >
 
     <!-- <div class="hover-bar"> -->
-      <%= f.input :separation_allowed, required: false, placeholder: "1", label: "Handshakes 🤝", wrapper_html: { class: "search-input-item hover-message", data: { tooltip: "How many friends"} }, input_html: { value: location, data: { tooltip: "How many friends"} } %>
+      <%= f.input :separation_allowed, required: false, placeholder: "How close to the host?", label: "Handshakes 🤝", wrapper_html: { class: "search-input-item hover-message", data: { tooltip: "How many friends"} }, input_html: { value: location, data: { tooltip: "How many friends"}, style: "cursor: pointer" } %>
 
     <!-- </div> -->
 
-    <%= f.input :location, required: true, label: "City", placeholder: "Berlin", wrapper_html: {class: "search-input-item"}, input_html: { value: separation_allowed }, id: "city-input" %>
+    <%= f.input :location, required: true, label: "City", placeholder: "Where to?", wrapper_html: {class: "search-input-item"}, input_html: {  value: separation_allowed, style: "cursor: pointer" }, id: "city-input" %>
 
-    <%= f.input :dates, required: false, placeholder: "March 26th - April 4th", wrapper_html: {class: "search-input-item"}, input_html: { class: "datepicker-range" }, label: "Check-in/Check-out" %>
+    <%= f.input :dates, required: false, placeholder: "Add some dates", wrapper_html: {class: "search-input-item"}, input_html: { class: "datepicker-range" }, label: "Check-in/Check-out" %>
 
     <%= f.button :submit, "Search", class: "btn btn-rounded" %>
 
