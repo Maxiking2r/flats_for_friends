@@ -4,6 +4,12 @@
   position: sticky;
   top: 0;
   z-index: 9999;
+
+  .btn-rounded {
+    border-radius: 6px;
+    margin-right: 10px;
+    padding: 0.375rem 0.75rem;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
